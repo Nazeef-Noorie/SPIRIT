@@ -347,7 +347,7 @@ std::cout << "BiCGSTAB did not converge within max iterations.\n";
 
 int main(){
     // Open the input file which contains the matrices
-    std::ifstream inputFile("Real.txt");
+    std::ifstream inputFile("data.txt");
     if (!inputFile.is_open()) {
         std::cerr << "Error opening input file!" << std::endl;
         return 1;
