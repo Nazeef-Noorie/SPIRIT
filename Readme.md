@@ -18,6 +18,13 @@ It is designed to efficiently handle **large, stiff systems** arising from nucle
 ## Data
 
 You can test SPIRIT's capability to solve large sparse matrices either by generating your own files (txt files) in CSR format.
+The format of the text file should be:
+Matrix1:    Line1: Row pointer values
+            Line2: Column indices
+            Line3: Matrix values
+            Line4: Right-hand side vector
+Matrix2:    Line5:Row pointer values...
+
 
 I have attached a link to a large dataset generated during an r-process run: https://drive.google.com/file/d/1cTpc-4QQu-jVxnd2h-GaCyFtsrJeu4sd/view?usp=drive_link
 
