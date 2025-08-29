@@ -20,7 +20,7 @@ Requirements:
 Note: The solver can only take two string inputs: "bicgstab" or "gmres"
 ```bash
 git clone https://github.com/yourname/spirit-solver.git
-cd spirit-solver
+cd spirit
 mkdir build && cd build
 cmake ..
 make
