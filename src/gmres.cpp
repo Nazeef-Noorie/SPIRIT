@@ -14,8 +14,7 @@ void gmres(const vector<double>& A_vals, const vector<int>& A_IA, const vector<i
 {
     int n = B.size();
 
-    double normb = 1.0; // could compute ||b|| but fixed as 1.0 in your version
-
+    double normb = 1.0; 
     vector<double> Ax = matvec(A_vals, A_IA, A_JA, n, X);
     vector<double> r = rsolv(A_vals, A_IA, A_JA, n, X, B);
 
