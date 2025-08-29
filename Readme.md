@@ -10,13 +10,10 @@ It is designed to efficiently handle **large, stiff systems** arising from nucle
   Implements a *dual-threshold* filtering step before factorization, reducing fill-in and improving stability.
   
 - **Hybrid Solver Approach**  
-  Combines **BiCGSTAB** with **iterative refinement** for robust convergence on ill-conditioned systems.
+  Combines **BiCGSTAB** with **iterative refinement** for robust convergence on ill-conditioned systems. There also an option to opt for **GMRES** iterative method.
   
 - **Performance**  
   Benchmarks against **Intel MKL** show significant improvements in both runtime and memory usage.
-
-- **Integration**  
-  Fully integrated into **SkyNet**, offering an open-source alternative for **high-performance nuclear astrophysics simulations**.
 
 
 ## Build Instructions
