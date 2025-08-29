@@ -38,4 +38,10 @@ cd spirit
 mkdir build && cd build
 cmake ..
 make
-./spirit [file path containing matrices] [solver] [number of matrices to solve]          
+./spirit [file path containing matrices] [solver] [number of matrices to solve]
+
+
+//For example:
+./spirit ../data/Real.txt bicgstab 100
+
+        
