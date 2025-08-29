@@ -42,6 +42,6 @@ make
 
 
 //For example:
-./spirit ../data/Real.txt bicgstab 100
+./spirit ../Path/Real.txt bicgstab 100
 
         
