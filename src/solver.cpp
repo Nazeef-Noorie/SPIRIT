@@ -17,12 +17,24 @@ struct MatrixSystem {
 };
 
 void runSolver(const std::string& inputFile, int maxMatrices, const std::string& solverType) {
-    std::ifstream f(inputFile);
-    if (!f.is_open()) {
-        std::cerr << "Error opening input file: " << inputFile << std::endl;
+    // Open log file inside logs/ directory
+    std::ofstream logFile("logs/run_log.txt");
+    if (!logFile.is_open()) {
+        std::cerr << "Error opening log file in logs/ folder.\n";
         return;
     }
-    std::cout << "Reading matrices..." << std::endl;
+
+    auto log = [&](const auto& msg) {
+        std::cout << msg;   // keep console output
+        logFile << msg;     // also log to file
+    };
+
+    std::ifstream f(inputFile);
+    if (!f.is_open()) {
+        log("Error opening input file: " + inputFile + "\n");
+        return;
+    }
+    log("Reading matrices...\n");
     std::vector<MatrixSystem> systems;
     std::string line;
     int mats = 0;
@@ -57,7 +69,7 @@ void runSolver(const std::string& inputFile, int maxMatrices, const std::string&
         mats++;
     }
     f.close();
-    std::cout << "Finished reading matrices." << std::endl;
+    log("Finished reading matrices.\n");
 
     // --- Choose solver ONCE ---
     std::function<void(const std::vector<double>&, const std::vector<int>&, const std::vector<int>&,
@@ -81,7 +93,7 @@ void runSolver(const std::string& inputFile, int maxMatrices, const std::string&
                   restart, max_iter, tol);
         };
     } else {
-        std::cerr << "Unknown solver: " << solverType << std::endl;
+        log("Unknown solver: " + solverType + "\n");
         return;
     }
 
@@ -116,20 +128,22 @@ void runSolver(const std::string& inputFile, int maxMatrices, const std::string&
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = end - start;
 
-        std::cout << "Matrix number: " << i + 1 << "\n";
-        std::cout << "Residual norm: " << rmag << "\n";
-        std::cout << "Time taken for this matrix: " << elapsed.count() << " seconds\n\n";
+        log("Matrix number: " + std::to_string(i + 1) + "\n");
+        log("Residual norm: " + std::to_string(rmag) + "\n");
+        log("Time taken for this matrix: " + std::to_string(elapsed.count()) + " seconds\n\n");
     }
 
     auto total_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> total_elapsed = total_end - total_start;
     double avg_time = total_elapsed.count() / systems.size();
 
-    std::cout << "========== Solver Statistics ==========\n";
-    std::cout << "Solver used: " << solverType << "\n";
-    std::cout << "Total matrices solved: " << systems.size() << "\n";
-    std::cout << "Total time: " << total_elapsed.count() << " seconds\n";
-    std::cout << "Average time per matrix: " << avg_time << " seconds\n";
-    std::cout << "=======================================\n";
+    log("========== Solver Statistics ==========\n");
+    log("Solver used: " + solverType + "\n");
+    log("Total matrices solved: " + std::to_string(systems.size()) + "\n");
+    log("Total time: " + std::to_string(total_elapsed.count()) + " seconds\n");
+    log("Average time per matrix: " + std::to_string(avg_time) + " seconds\n");
+    log("=======================================\n");
+
+    logFile.close();
 }
 
