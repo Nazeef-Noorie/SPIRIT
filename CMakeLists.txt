@@ -17,6 +17,10 @@ endif()
 
 include_directories(include)
 
+add_custom_target(create_logs_dir ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/logs
+    COMMENT "Creating logs directory in build folder"
+)
 file(GLOB SRC_FILES src/*.cpp)
 
 add_executable(spirit ${SRC_FILES})
