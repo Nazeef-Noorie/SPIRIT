@@ -1,4 +1,4 @@
-# SPIRIT: Sparse Preconditioned Iterative Refinement & Iterative Techniques
+# SPIRIT: Sparse Matrix Preconditioner for Iterative Refinement and Inversion Toolkit
 
 SPIRIT is a **novel sparse matrix solver** with a custom preconditioner tailored for **r-process nucleosynthesis simulations** in [SkyNet](https://bitbucket.org/jlippuner/skynet).  
 It is designed to efficiently handle **large, stiff systems** arising from nuclear reaction networks.
