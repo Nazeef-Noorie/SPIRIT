@@ -48,8 +48,8 @@ Requirements:
 
 Note: The solver can only take two string inputs: "bicgstab" or "gmres"
 ```bash
-git clone https://github.com/yourname/spirit-solver.git
-cd spirit
+git clone https://github.com/Nazeef-Noorie/SPIRIT.git
+cd SPIRIT
 mkdir build && cd build
 cmake ..
 make
